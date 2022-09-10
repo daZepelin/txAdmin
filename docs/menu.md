@@ -58,6 +58,12 @@ Convars configured in the settings page should not be set manually.
 - Default: `false`
 - Usage: `+set txAdmin-menuPtfxDisable true`
 
+**txAdmin-menuAnnounceNotiPos**
+- Description: Determines the location of the txAdmin announcement notification. This **must** use one of the following valid 
+positions, `top-center`, `top-left`, `top-right`, `bottom-center`, `bottom-left`, `bottom-right`.
+- Default: `top-center`
+- Usage: `+set txAdmin-menuAnnounceNotiPos top-right`
+
 ## Commands
 **tx | txadmin**
 - Description: Will toggle the in-game menu. This command has an optional argument of a player id that will quickly open up the target player's info modal.
@@ -76,9 +82,9 @@ Convars configured in the settings page should not be set manually.
 
 ## Troubleshooting menu access
 
-If you type `/tx` and nothing happens, your menu is probably disabled.  
-If you see a red message like [this](https://i.imgur.com/G83uTNC.png) and you are registered on txAdmin, you can type `/txAdmin-reauth` in the chat to retry the authentication.  
-> Note: The entire menu auth system was rewritten in version v4.8.0 to solve issues related to the NUI authentication.
+- If you type `/tx` and nothing happens, your menu is probably disabled.  
+- If you see a red message like [this](https://i.imgur.com/G83uTNC.png) and you are registered on txAdmin, you can type `/txAdmin-reauth` in the chat to retry the authentication.  
+- If you can't authenticate and the reason id `Invalid Request: source`, this means the source IP of the HTTP request being made by fxserver to txAdmin is not a "localhost" one, which might occur if your host has multiple IPs. To disable this protection, edit your `config.json` file and add `webServer.disableNuiSourceCheck` with value `true` then restart txAdmin.
 
 ## Development
 You can find development instructions regarding the menu [here.](https://github.com/tabarra/txAdmin/blob/master/docs/development.md#menu-development)
